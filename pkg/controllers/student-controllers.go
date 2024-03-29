@@ -86,6 +86,21 @@ func UpdateStudent(w http.ResponseWriter, r *http.Request) {
 	if updateStudent.Angkatan != "" {
 	studentDetails.Angkatan = updateStudent.Angkatan
 	}
+	if updateStudent.StatusAktif != "" {
+	studentDetails.StatusAktif = updateStudent.StatusAktif
+	}
+	if updateStudent.Username != "" {
+	studentDetails.Username = updateStudent.Username
+	}
+	if updateStudent.EmailAkademik != "" {
+	studentDetails.EmailAkademik = updateStudent.EmailAkademik
+	}
+	if updateStudent.WaliMahasiswa != "" {
+	studentDetails.WaliMahasiswa = updateStudent.WaliMahasiswa
+	}
+	if updateStudent.JalurMasuk != "" {
+	studentDetails.JalurMasuk = updateStudent.JalurMasuk
+	}
 	db.Save(&studentDetails)
 	res, _ := json.Marshal(studentDetails)
 	w.Header().Set("Content-Type", "pkglication/json")

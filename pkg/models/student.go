@@ -7,14 +7,22 @@ import (
 
 var db *gorm.DB
 
+// Kolom-kolom yang ada di tabel student
 type Student struct {
 	gorm.Model
-	NIM string `gorm:""json:"nim"`
+	NIM string `gorm:"json:nim"`
 	Name string `json:"name"`
 	IPK string `json:"ipk"`
 	Jurusan string `json:"jurusan"`
 	Angkatan string `json:"angkatan"`
+	StatusAktif string `json:"status_aktif"`
+	Username string `json:"username"`
+	EmailAkademik string `json:"email_akademik"`
+	WaliMahasiswa string `json:"wali_mahasiswa"`
+	JalurMasuk string `json:"jalur_USM"`
+
 }
+
 func init() {
 	config.Connect()
 	db = config.GetDB()
@@ -35,8 +43,10 @@ func GetStudentbyId(nim int64) (*Student, *gorm.DB) {
 	db := db.Where("NIM=?", nim).Find(&getStudent)
 	return &getStudent, db
 }
+
 func DeleteStudent(nim int64) Student {
 	var student Student
 	db.Where("NIM=?", nim).Delete(student)
 	return student
 }
+
