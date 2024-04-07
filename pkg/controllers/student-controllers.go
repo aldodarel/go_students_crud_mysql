@@ -11,7 +11,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// Contorllers ini berisi fungsi untuk memproses data yaitu response maupun request dari dan ke user
+// Controllers ini berisi fungsi untuk memproses data yaitu response maupun request dari dan ke user
 var NewStudent models.Student
 
 func GetStudent(w http.ResponseWriter, r *http.Request) {
